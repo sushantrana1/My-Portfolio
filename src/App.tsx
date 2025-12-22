@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { landing, own } from './image';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { own } from './image';
+import { FaLinkedin, FaGithub, FaEnvelope, FaHeart, FaMoon } from 'react-icons/fa';
+import { MdSunny } from "react-icons/md";
 
 const App: React.FC = () => {
   const [dark, setDark] = useState<boolean>(false);
@@ -131,7 +132,7 @@ const App: React.FC = () => {
             <a href="#skills" className="hover:text-indigo-500 transition">Skills</a>
             <a href="#contact" className="hover:text-indigo-500 transition">Contact</a>
             <button onClick={() => setDark(!dark)} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transition">
-              {dark ? '🌙' : '☀️'}
+              {dark ? <FaMoon/> : <MdSunny/>}
             </button>
           </nav>
         </div>
@@ -354,7 +355,7 @@ const App: React.FC = () => {
         </section>
 
         {/* Footer */}
-        <footer className="py-6 text-center text-sm text-gray-500">Made with ❤️ by {name}</footer>
+        <footer className="py-1 px-8 flex items-center justify-center">Made with  < FaHeart />  by {name}</footer>
       </main>
     </div>
   );
