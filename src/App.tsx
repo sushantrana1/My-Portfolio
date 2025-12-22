@@ -14,14 +14,6 @@ const App: React.FC = () => {
   const name = 'Sushant Rana';
 
   const email = "sushantrana1121@gmail.com";
-  const skills: { name: string; level: number }[] = [
-    { name: 'HTML', level: 90 },
-    { name: 'CSS', level: 85 },
-    { name: 'JavaScript', level: 90 },
-    { name: 'React', level: 85 },
-    { name: 'TypeScript', level: 70 },
-    { name: 'Tailwind', level: 80 },
-  ];
 
   const technicalSkills = [
     {
