@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { landing, own } from './image';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const App: React.FC = () => {
   const [dark, setDark] = useState<boolean>(false);
@@ -10,140 +11,350 @@ const App: React.FC = () => {
   }, [dark]);
 
   const name = 'Sushant Rana';
-  const tagline = 'Frontend Developer | UI/UX Enthusiast';
-  const email = 'sushantrana1121@gmail.com';
-  const skills: string[] = ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind'];
 
-  const projects: { title: string; desc: string; tech: string; link: string }[] = [
+  const email = "sushantrana1121@gmail.com";
+  const skills: { name: string; level: number }[] = [
+    { name: 'HTML', level: 90 },
+    { name: 'CSS', level: 85 },
+    { name: 'JavaScript', level: 90 },
+    { name: 'React', level: 85 },
+    { name: 'TypeScript', level: 70 },
+    { name: 'Tailwind', level: 80 },
+  ];
+
+  const technicalSkills = [
     {
-      title: 'Product Landing Page',
-      desc: 'Responsive landing page focused on UI clarity, CTAs, and accessible layout. Built with React + Tailwind.',
-      tech: 'React, Tailwind, HTML, CSS',
-      link: '#',
+      title: "Programming Languages",
+      items: ["PHP", "JavaScript", "TypeScript"],
     },
     {
-      title: 'UI Component Library',
-      desc: 'Collection of reusable components (cards, buttons, modals) with a consistent design language.',
-      tech: 'React, Tailwind',
-      link: '#',
+      title: "Frontend",
+      items: ["HTML5", "CSS3", "React.js"],
     },
     {
-      title: 'Interactive Portfolio',
-      desc: 'A modern portfolio with theme toggle and smooth section navigation.',
-      tech: 'React, Tailwind',
-      link: '#',
+      title: "Backend",
+      items: ["Node.js", "Express.js", "PHP"],
+    },
+    {
+      title: "Database",
+      items: ["MongoDB", "MySQL"],
+    },
+    {
+      title: "Tools & Platforms",
+      items: [
+        "Git",
+        "GitHub",
+        "VS Code",
+        "Postman",
+        "XAMPP",
+        "npm",
+        "MS Word",
+        "Excel",
+        "PowerPoint",
+      ],
+    },
+  ]
+
+  const projects = [
+    {
+      title: "Pharmacy Management System",
+      description:
+        "A full-stack web application designed to manage pharmacy inventory, medicine sales, billing, and reports. Implemented user authentication and CRUD operations for efficient management.",
+      tech: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+      github: "https://github.com/sushantrana1/Pharmacy-Management-System",
+    },
+    {
+      title: "ShopEase Website",
+      description:
+        "An e-commerce website with product listing, cart functionality, and admin-side management. Focused on responsive UI and dynamic data handling.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/sushantrana1/Shopease",
+    },
+    {
+      title: "Basic Calculator",
+      description:
+        "A simple calculator web application supporting basic arithmetic operations with a clean and user-friendly interface.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      github: "https://github.com/sushantrana1/Basic-Calculator",
     },
   ];
 
+  const education = [
+    {
+      degree: "Bachelor of Information Management (BIM)",
+      institution: "Sudur Paschimanchal Campus, Tribhuvan University",
+      period: "7th Semester | Expected 2026",
+    },
+    {
+      degree: "+2 in Commerce",
+      institution: "National Academy of Science and Technology",
+      period: "2077 - 2079",
+    },
+    {
+      degree: "Secondary Education Examination (SEE)",
+      institution: "Shree Saraswati Secondary School",
+      period: "2075 - 2076",
+    },
+  ];
+
+  const certifications = [
+  {
+    title: "MERN Stack Course",
+    year: "2025",
+  },
+  {
+    title: "Artificial Intelligence for Development",
+    year: "2025",
+  },
+  {
+    title: "Hardware & Networking Training",
+    year: "2024",
+  },
+  {
+    title: "Basic Computer Course",
+    year: "2022",
+  },
+];
+
+
+
+
   return (
-    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300 overflow-x-hidden">
+    <div className="w-full min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-500 overflow-x-hidden font-sans">
 
-    <header className="max-w-5xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-xl font-semibold">{name}</h1>
-          <p className="text-sm text-gray-600 dark:text-gray-300">{tagline}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <a href={`mailto:${email}`} className="hidden sm:inline-block px-4 py-2 border rounded-md text-sm hover:bg-gray-100 dark:hover:bg-gray-800">Contact</a>
-          <button
-  onClick={() => setDark(!dark)}
-  className="p-2 rounded-full bg-white dark:bg-gray-700 transform transition duration-500 hover:rotate-12"
->
-  {dark ? '🌙' : '☀️'}
-</button>
-
+      {/* Navbar */}
+      <header className="fixed w-full bg-white dark:bg-gray-800 shadow-md z-50">
+        <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+          <h1 className="text-xl font-bold">{name}</h1>
+          <nav className="flex items-center gap-4">
+            <a href="#projects" className="hover:text-indigo-500 transition">Projects</a>
+            <a href="#skills" className="hover:text-indigo-500 transition">Skills</a>
+            <a href="#contact" className="hover:text-indigo-500 transition">Contact</a>
+            <button onClick={() => setDark(!dark)} className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:scale-110 transition">
+              {dark ? '🌙' : '☀️'}
+            </button>
+          </nav>
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6">
-        {/* Hero */}
-        <section className="grid gap-6 md:grid-cols-2 items-center my-8">
-          <div>
-            <h2 className="text-4xl font-bold leading-tight">Hi, I’m {name}.</h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">{tagline} focused on building clean, responsive interfaces and delightful user experiences. I enjoy crafting pixel-perfect UI and turning designs into accessible, maintainable code.</p>
+      <main className="pt-24 max-w-6xl mx-auto px-6">
 
-            <div className="mt-6 flex flex-wrap gap-3">
-          <a href="#projects" className="px-6 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transform transition duration-300 shadow-lg">See Projects</a>
-<a href={`mailto:${email}`} className="px-6 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transform transition duration-300 shadow-lg">Contact Me</a>
+        {/* Hero Section */}
+        <section className="grid md:grid-cols-2 gap-8 items-center py-12">
+          <div className="space-y-6">
+            <h2 className="text-5xl font-bold leading-tight">
+              Hi, I’m {name}.
+            </h2>
 
+            <p className="text-indigo-600 font-medium text-lg">
+              BIM Student | MERN Stack Learner
+            </p>
+
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+              Bachelor of Information Management (BIM) student with a strong foundation in
+              the MERN stack (MongoDB, Express.js, React.js, Node.js) and hands-on experience
+              in full-stack web development. Skilled in building responsive user interfaces,
+              developing RESTful APIs, and managing databases. Additionally experienced in
+              PHP and MySQL through academic projects. Passionate about learning modern
+              technologies and seeking an IT/Software Development internship to apply and
+              enhance practical skills.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="px-6 py-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 transition shadow-lg"
+              >
+                See Projects
+              </a>
+
+              <a
+                href={`mailto:${email}`}
+                className="px-6 py-3 border border-indigo-600 text-indigo-600 rounded-full hover:bg-indigo-600 hover:text-white transition shadow-lg"
+              >
+                Contact Me
+              </a>
             </div>
-
-            <div className="mt-6 text-sm text-gray-500">Available for internships — ready to contribute and learn.</div>
           </div>
 
           <div className="flex justify-center md:justify-end">
-            <div className="w-56 h-56 rounded-xl bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-              <img src={own} alt="SR" />
+            <div className="relative w-64 h-64 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 p-1">
+              <img
+                src={own}
+                alt="Sushant Rana"
+                className="w-full h-full rounded-full object-cover bg-white"
+              />
             </div>
           </div>
         </section>
 
-        {/* About + Skills */}
-        <section className="grid md:grid-cols-3 gap-6 my-8">
-          <div className="md:col-span-2 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-            <h3 className="text-xl font-semibold">About Me</h3>
-            <p className="mt-3 text-gray-600 dark:text-gray-300">I build user-friendly interfaces with attention to detail and accessible design. I enjoy collaborating with designers and backend developers to deliver polished products. Currently learning more advanced React patterns and UX research methods.</p>
 
-            <div className="mt-4 flex flex-wrap gap-3">
-              <a href="#" className="px-6 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transform transition duration-300 shadow-lg">Open to work</a>
-              <a href="#" className="px-6 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transform transition duration-300 shadow-lg">Remote</a>
-            </div>
-          </div>
+        {/* Skills */}
+        <section id="skills" className="my-12">
+          <h3 className="text-3xl font-bold text-indigo-600 mb-8">
+            Technical Skills
+          </h3>
 
-          <aside className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-            <h4 className="font-semibold">Skills</h4>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <li key={s} className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">{s}</li>
-              ))}
-            </ul>
-          </aside>
-        </section>
+          <div className="grid md:grid-cols-2 gap-6">
+            {technicalSkills.map((skill) => (
+              <div
+                key={skill.title}
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition"
+              >
+                <h4 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
+                  {skill.title}
+                </h4>
 
-        {/* Projects */}
-        <section id="projects" className="my-8">
-          <h3 className="text-2xl font-semibold mb-4">Projects</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {projects.map((p) => (
-              <article key={p.title} className="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:translate-y-[-4px] transition-transform">
-                <div className="h-36 rounded-md bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 mb-4 flex items-center justify-center text-sm">
-                  <img src={landing} alt="preview" />
+                <div className="flex flex-wrap gap-3">
+                  {skill.items.map((item) => (
+                    <span
+                      key={item}
+                      className="px-4 py-2 bg-indigo-50 dark:bg-gray-700 
+                         text-indigo-600 dark:text-indigo-400 
+                         rounded-full text-sm font-medium"
+                    >
+                      {item}
+                    </span>
+                  ))}
                 </div>
-                <h4 className="font-semibold">{p.title}</h4>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{p.desc}</p>
-                <div className="mt-3 text-xs text-gray-500">{p.tech}</div>
-                <div className="mt-4">
-                  <a href={p.link} className="text-sm px-3 py-1 border rounded-md">View</a>
-                </div>
-              </article>
+              </div>
             ))}
           </div>
         </section>
 
-        {/* Contact */}
-        <section className="my-12 p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm">
-          <h3 className="text-xl font-semibold">Get in touch</h3>
-          <p className="mt-2 text-gray-600 dark:text-gray-300">Email me at <a href={`mailto:${email}`} className="underline">{email}</a> or use the quick links below.</p>
+        {/* Projects */}
+        <section id="projects" className="my-12">
+          <h3 className="text-3xl font-bold text-indigo-600 mb-8">
+            Projects
+          </h3>
 
-          <div className="mt-4 flex gap-3">
-            <a href={`mailto:${email}`} className="px-6 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transform transition duration-300 shadow-lg">Email</a>
-            <a href="#" className="px-6 py-3 rounded-full bg-white text-indigo-600 font-semibold hover:scale-105 transform transition duration-300 shadow-lg">LinkedIn</a>
+          <div className="grid md:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <div
+                key={project.title}
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg 
+                   hover:-translate-y-2 hover:shadow-2xl transition"
+              >
+                <h4 className="text-xl font-semibold mb-3">
+                  {project.title}
+                </h4>
+
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-xs rounded-full 
+                 bg-indigo-100 dark:bg-gray-700 
+                 text-indigo-600 dark:text-indigo-400"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 
+             border border-indigo-600 text-indigo-600 
+             rounded-full hover:bg-indigo-600 hover:text-white 
+             transition text-sm"
+                >
+                  View on GitHub
+                </a>
+              </div>
+            ))}
           </div>
         </section>
 
-        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden">
-            <h3 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400 p-6">Our Location</h3>
-            <div className="h-64">
-              {/* Google Map iframe placeholder */}
-              <iframe
-                title="ShopEase Location"
-                src="https://maps.google.com/maps?q=Dhangadhi,Nepal&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                className="w-full h-full border-0"
-              ></iframe>
+
+        <section id="resume-education" className="my-12">
+          <h3 className="text-3xl font-bold text-indigo-600 mb-8">
+            Resume & Education
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Resume Card */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+              <h4 className="text-2xl font-semibold mb-3">Resume</h4>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Download my resume to view detailed information about my skills,
+                education, and projects.
+              </p>
+
+              <a
+                href="/Sushant_Rana_Resume.pdf"
+                download
+                className="inline-block px-6 py-3 bg-indigo-600 text-white 
+                   rounded-full hover:bg-indigo-700 transition shadow-lg"
+              >
+                Download Resume
+              </a>
+            </div>
+
+            {/* Education Card */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+              <h4 className="text-2xl font-semibold mb-4">Education</h4>
+
+              <div className="space-y-4">
+                {education.map((edu) => (
+                  <div key={edu.degree} className="border-b pb-3 last:border-none">
+                    <h5 className="font-semibold">{edu.degree}</h5>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {edu.institution}
+                    </p>
+                    <p className="text-sm text-gray-500">{edu.period}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
+        </section>
 
-        <footer className="py-6 text-center text-sm text-gray-500">Made with ❤️ by {name} — Frontend Developer | UI/UX Enthusiast</footer>
+        {/*traninig*/}
+        <section id="certifications" className="my-12">
+  <h3 className="text-3xl font-bold text-indigo-600 mb-8">
+    Training & Certifications
+  </h3>
+
+  <div className="grid md:grid-cols-2 gap-6">
+    {certifications.map((cert) => (
+      <div
+        key={cert.title}
+        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg 
+                   hover:shadow-xl transition"
+      >
+        <h4 className="text-xl font-semibold">
+          {cert.title}
+        </h4>
+        <p className="text-sm text-gray-500 mt-1">
+          {cert.year}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+
+        {/* Contact */}
+        <section id="contact" className="my-12 p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+          <h3 className="text-3xl font-bold text-indigo-600 mb-4">Get in touch</h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-4">Email me at <a href={`mailto:${email}`} className="underline">{email}</a> or connect via social links:</p>
+          <div className="flex gap-4">
+            <a href={`mailto:${email}`} className="px-4 py-2 bg-indigo-600 rounded-full flex items-center gap-2 hover:bg-indigo-700 transition"><FaEnvelope /> Email</a>
+            <a href="https://www.linkedin.com/in/sushant-rana-5770a6266/" className="px-4 py-2 bg-indigo-600 rounded-full flex items-center gap-2 hover:bg-indigo-700 transition"><FaLinkedin /> LinkedIn</a>
+            <a href="https://github.com/sushantrana1" className="px-4 py-2 bg-indigo-600 rounded-full flex items-center gap-2 hover:bg-indigo-700 transition"><FaGithub /> GitHub</a>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-6 text-center text-sm text-gray-500">Made with ❤️ by {name}</footer>
       </main>
     </div>
   );
